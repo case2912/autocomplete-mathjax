@@ -13,11 +13,11 @@ module.exports =
       (err, data) => @completions = JSON.parse(data) unless err?)
 
   getSuggestions: ({editor, prefix}) ->
-    if prefix.length < 2
+    if prefix.length < 3
       return []
 
     completions = []
     for type, names of @completions
       for name in names
-        completions.push({type: type, text: name})
+        completions.push({type: type, snippet: name})
     completions
